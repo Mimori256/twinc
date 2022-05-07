@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #eeeeee;
+  color: #333333;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -31,3 +33,56 @@
     transform: rotate(360deg);
   }
 }
+
+
+.warn {
+  font-size: 1.1rem;
+  color: deeppink;
+}
+/*
+label,
+input[type="checkbox"] {
+  cursor: pointer;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+#fileUpload {
+  position: center;
+  white-space: nowrap;
+  width: 10rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1%;
+  font-weight: 400;
+  color: #333;
+  line-height: 2.5rem;
+  background-color: #ddd;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin-top: 1.5%;
+  margin-left: 41.5%;
+  margin-bottom: 2.5%;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#fileName {
+  color: deeppink;
+  margin-right: 5%;
+  white-space: nowrap;
+}
+
+#fileUpload:hover {
+  background-color: #5ecfd1;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+*/

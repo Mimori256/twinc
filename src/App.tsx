@@ -5,6 +5,12 @@ import Help from "./Help";
 import kdb from "./assets/kdb.json";
 import parseCSV from "./parse";
 
+declare global {
+  interface Navigator {
+    msSaveBlob?: (blob: any, defaultName?: string) => boolean;
+  }
+}
+
 const createICS = (csv: Blob) => {
   let fileContent;
   let idList: string[] = [];
@@ -41,6 +47,21 @@ const createICS = (csv: Blob) => {
   const minute = ("0" + now.getMinutes()).slice(-2);
   const second = ("0" + now.getSeconds()).slice(-2);
   const fileName = `${hour}-${minute}-${second}${"twinc.ics"}`;
+
+  if (window.navigator.msSaveBlob) {
+    window.navigator.msSaveBlob(
+      new Blob([output], { type: "text/plain" }),
+      fileName
+    );
+  } else {
+    let a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([output], { type: "text/plain" }));
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.location.reload();
+  }
 };
 
 const onFileStateChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,12 +90,28 @@ function App() {
       <p>TWINSまたはKdBもどきのCSVファイルを選択してください</p>
       <p>詳しい使い方はHelpを参照してください</p>
       <div id="selectedFiles"></div>
-      <input
-        type="file"
-        id="fileUpload"
-        accept=".csv"
-        onChange={onFileStateChanged}
-      ></input>
+      <label id="fileUpload">
+        <input
+          type="file"
+          id="fileUpload"
+          accept=".csv"
+          onChange={onFileStateChanged}
+        ></input>
+      </label>
+      <span className="notice">
+        <span className="warn">
+          <p>
+            生成したICSファイルは新しく作ったカレンダーにインポートしてください！
+          </p>
+        </span>
+        <p>試験期間、試験日の予定は登録されないことに注意してください</p>
+        <p>モジュールの期間は学年暦に基づいています</p>
+        <p>祝日に授業は登録されません</p>
+        <p>通年授業は現在登録に対応していません</p>
+        <p>
+          学年暦に表示されている振替には対応していますが、それ以外の振替には対応していません
+        </p>
+      </span>
     </div>
   );
 }

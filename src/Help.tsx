@@ -1,5 +1,4 @@
 import React from "react";
-import { SideMenu } from "./SideMenu";
 
 const Help: React.FC = () => {
   return (

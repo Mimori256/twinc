@@ -6,7 +6,7 @@ const beginSpringA: { [key: string]: string } = {
   水: "20220413",
   木: "20220414",
   金: "20220415",
-  土: "20210416",
+  土: "20220416",
 };
 
 const beginSpringB: { [key: string]: string } = {
@@ -344,7 +344,7 @@ const getABCRepeat = (module: string, period: string): string => {
   let rrule: string = "RRULE:FREQ=WEEKLY;UNTIL=";
   let exdate: string;
 
-  rrule += module[0] === "春" ? "20210729T130000Z;" : "20220208T130000Z;";
+  rrule += module[0] === "春" ? "20220802T130000Z;" : "20230207T130000Z;";
 
   rrule += "BYDAY=" + engWeekday[period[0]] + "\n";
   exdate = removeABCHolidays(module, period);
@@ -353,7 +353,7 @@ const getABCRepeat = (module: string, period: string): string => {
 
 const getMisc = (name: string, classroom: string, desc: string): string => {
   //Create a timestamp for this year
-  const year: string = "2021";
+  const year: string = "2022";
   const month: string = "4";
   const date: string = "8";
   const hour: string = "0";
@@ -441,7 +441,7 @@ const removeABCHolidays = (module: string, period: string): string => {
 const addDeadlines = (): string => {
   let deadlinesList: string[] = [];
   let misc: string =
-    "DTSTAMP:20210408T000000\nCREATED:20210408T000000\nSTATUS:CONFIRMED\nTRANSP:TRANSPARENT\n";
+    "DTSTAMP:20220408T000000\nCREATED:20220408T000000\nSTATUS:CONFIRMED\nTRANSP:TRANSPARENT\n";
   let dtstart: string;
   let dtend: string;
   let nextDate: string;

@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Help from "./Help";
 //import { parse } from "node:path/win32";
 import kdb from "./assets/kdb.json";
 import parseCSV from "./parse";

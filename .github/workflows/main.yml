@@ -25,5 +25,5 @@ jobs:
             git config --global user.email "action@github.com"
             git config --global user.name "GitHub Action"
             git commit -m "update JSON: $(date +%Y%m%d)"
-            git push
+            git push -f origin main
           fi

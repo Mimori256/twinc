@@ -10,35 +10,10 @@ declare global {
   }
 }
 
-const createICS = (csv: Blob) => {
-  let fileContent;
-  let idList: string[] = [];
-  let fileNameList: string[] = [];
-  let tmpList;
-  let output: string;
+let interval: NodeJS.Timeout;
 
-  // Create ICS file
-  let reader = new FileReader();
-  reader.readAsText(csv);
-  reader.onload = () => {
-    fileContent = String(reader.result);
-    //Check if the uploaded file is from KdBAlt
-    if (fileContent?.slice(0, 1) === "科") {
-      tmpList = fileContent.split("\n").filter((x) => x.slice(0, 1) === '"');
-      tmpList = tmpList
-        .map((x) => x.replace('"', ""))
-        .filter((x, i, self) => self.indexOf(x) === i);
-      idList = tmpList;
-      console.log(idList);
-      output = parseCSV(idList, kdb, true);
-    } else {
-      idList = fileContent
-        .split("\n")
-        .filter((x, i, self) => self.indexOf(x) === i);
-      output = parseCSV(idList, kdb, true);
-    }
-  };
-  output = parseCSV(idList, kdb, true);
+const downloadCSV = (output: string) => {
+  clearInterval(interval);
   output += "END:VCALENDAR";
 
   const now = new Date();
@@ -59,15 +34,49 @@ const createICS = (csv: Blob) => {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    window.location.reload();
+    //window.location.reload();
+    return true;
   }
+};
+
+const createICS = (csv: Blob) => {
+  let fileContent;
+  let idList: string[] = [];
+  let fileNameList: string[] = [];
+  let tmpList;
+  let output: string = "";
+
+  // Create ICS file
+  let reader = new FileReader();
+  reader.readAsText(csv);
+  reader.onload = () => {
+    fileContent = String(reader.result);
+    //Check if the uploaded file is from KdBAlt
+    if (fileContent?.slice(0, 1) === "科") {
+      tmpList = fileContent.split("\n").filter((x) => x.slice(0, 1) === '"');
+      tmpList = tmpList
+        .map((x) => x.replace('"', ""))
+        .filter((x, i, self) => self.indexOf(x) === i);
+      idList = tmpList;
+      output += parseCSV(idList, kdb, true);
+    } else {
+      idList = fileContent
+        .split("\n")
+        .filter((x, i, self) => self.indexOf(x) === i);
+      output += parseCSV(idList, kdb, true);
+    }
+  };
+  interval = setInterval(function () {
+    if (output !== "") {
+      downloadCSV(output);
+    }
+  }, 100);
 };
 
 const onFileStateChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
   let idList: string[] = [];
   if (event.currentTarget.files !== null) {
     const file = (event.currentTarget as HTMLInputElement).files![0];
-    console.log(file);
     if (!file) {
       window.alert("ファイルが選択されていません");
       return;

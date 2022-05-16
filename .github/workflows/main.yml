@@ -13,12 +13,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: update JSON file
+      - name: update JSON file and build
         run: |
           cd src/assets
           curl https://raw.githubusercontent.com/Mimori256/kdb-parse/main/kdb_twinc.json > kdb.json
           cd ..
           cd ..
+          npm ci
+          npm run deploy
       - name: Push and Commit
         run: |
           git add .

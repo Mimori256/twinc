@@ -16,8 +16,6 @@ jobs:
       - name: update JSON file
       
         run: |
-          env:
-          CI: false
           cd src/assets
           curl https://raw.githubusercontent.com/Mimori256/kdb-parse/main/kdb_twinc.json > kdb.json
           cd ..

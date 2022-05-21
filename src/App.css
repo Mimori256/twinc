@@ -2,6 +2,7 @@
   text-align: center;
   background-color: #eeeeee;
   color: #333333;
+  height: 100vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -39,9 +40,11 @@
   font-size: 1.1rem;
   color: deeppink;
 }
-/*
-label,
-input[type="checkbox"] {
+
+label > input {
+display:none; /* アップロードボタンのスタイルを無効にする */
+}
+label {
   cursor: pointer;
   margin-bottom: 1rem;
   color: #333;
@@ -50,7 +53,7 @@ input[type="checkbox"] {
 #fileUpload {
   position: center;
   white-space: nowrap;
-  width: 10rem;
+  width: 12rem;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   letter-spacing: 0.1%;
@@ -64,19 +67,12 @@ input[type="checkbox"] {
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
-  margin-top: 1.5%;
-  margin-left: 41.5%;
-  margin-bottom: 2.5%;
-}
-
-input[type="file"] {
-  display: none;
-}
-
-#fileName {
-  color: deeppink;
-  margin-right: 5%;
-  white-space: nowrap;
+  margin-top: 2.5%;
+  margin-bottom: 4.5%;
+  padding-top: 0.7%;
+  padding-bottom: 0.7%;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
 }
 
 #fileUpload:hover {
@@ -85,4 +81,3 @@ input[type="file"] {
   color: #fff;
   transform: translateY(-7px);
 }
-*/

@@ -99,6 +99,7 @@ function App() {
       <p>詳しい使い方はHelpを参照してください</p>
       <div id="selectedFiles"></div>
       <label id="fileUpload">
+        ファイル選択
         <input
           type="file"
           id="fileUpload"

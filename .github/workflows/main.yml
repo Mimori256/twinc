@@ -20,12 +20,7 @@ jobs:
           curl https://raw.githubusercontent.com/Mimori256/kdb-parse/main/kdb_twinc.json > kdb.json
           cd ..
           cd ..
-      - name: Build
-        run: |
-          npm ci
-          npm run deploy
-        env: 
-          CI: false
+
       - name: Push and Commit
         run: |
           git add .

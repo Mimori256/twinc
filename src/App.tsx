@@ -27,6 +27,7 @@ const downloadCSV = (output: string) => {
       new Blob([output], { type: "text/plain" }),
       fileName
     );
+    window.location.reload();
   } else {
     let a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([output], { type: "text/plain" }));
@@ -34,7 +35,7 @@ const downloadCSV = (output: string) => {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    //window.location.reload();
+    window.location.reload();
     return true;
   }
 };
@@ -96,7 +97,7 @@ function App() {
     <div className="App">
       <h1>TwinC</h1>
       <p>TWINSまたはKdBもどきのCSVファイルを選択してください</p>
-      <p>詳しい使い方はHelpを参照してください</p>
+      <h4>詳しい使い方は下にスクロールして、Helpを参照してください</h4>
       <div id="selectedFiles"></div>
       <label id="fileUpload">
         ファイル選択
@@ -132,7 +133,6 @@ function App() {
         <p>
           学年暦に表示されている振替には対応していますが、それ以外の振替には対応していません
         </p>
-        <h3>使い方は、下にスクロールしてHelpを参照してください</h3>
       </span>
     </div>
   );

@@ -46,6 +46,20 @@ const createICS = (csv: Blob) => {
   let fileNameList: string[] = [];
   let tmpList;
   let output: string = "";
+  let isChecked: boolean;
+
+  //Check if the checkbox is checked
+  let checkboxElement = document.getElementById("includeDeadlines");
+  //TODO: チェックボックスの判定作成
+  const checkBox = document.querySelector(
+    "input[type='checkbox']"
+  ) as HTMLInputElement;
+
+  if (checkBox && checkBox.checked) {
+    isChecked = true;
+  } else {
+    isChecked = false;
+  }
 
   // Create ICS file
   let reader = new FileReader();
@@ -59,12 +73,12 @@ const createICS = (csv: Blob) => {
         .map((x) => x.replace('"', ""))
         .filter((x, i, self) => self.indexOf(x) === i);
       idList = tmpList;
-      output += parseCSV(idList, kdb, true);
+      output += parseCSV(idList, kdb, isChecked);
     } else {
       idList = fileContent
         .split("\n")
         .filter((x, i, self) => self.indexOf(x) === i);
-      output += parseCSV(idList, kdb, true);
+      output += parseCSV(idList, kdb, isChecked);
     }
   };
   interval = setInterval(function () {
@@ -107,6 +121,11 @@ function App() {
           accept=".csv"
           onChange={onFileStateChanged}
         ></input>
+      </label>
+      <br />
+      <input id="includeDeadlines" type="checkbox" name="includeDeadlines" />
+      <label htmlFor="includeDeadlines">
+        事前登録・履修登録締切日も追加する
       </label>
       <span className="notice">
         <span className="warn">

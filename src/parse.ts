@@ -460,12 +460,15 @@ const addDeadlines = (): string => {
 };
 
 export const parseCSV = (
-  idList: string[],
+  tmpidList: string[],
   kdb: any,
   isChecked: boolean
 ): string => {
   let output: string =
     "BEGIN:VCALENDAR\nPRODID:-//gam0022//TwinC 1.0//EN\nVERSION:2.0\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\nX-WR-CALNAME:授業時間割\nX-WR-TIMEZONE:Asia/Tokyo\nX-WR-CALDESC:授業時間割\nBEGIN:VTIMEZONE\nTZID:Asia/Tokyo\nX-LIC-LOCATION:Asia/Tokyo\nBEGIN:STANDARD\nTZOFFSETFROM:+0900\nTZOFFSETTO:+0900\nTZNAME:JST\nDTSTART:19700102T000000\nEND:STANDARD\nEND:VTIMEZONE\n";
+  let idList = tmpidList.filter(function (ele, pos) {
+    return tmpidList.indexOf(ele) == pos;
+  });
 
   idList = idList.map((x) => x.replace(/[\"]/g, ""));
   idList = idList.map((x) => x.replace(/\r/g, ""));

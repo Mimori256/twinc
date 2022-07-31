@@ -81,3 +81,7 @@ label {
   color: #fff;
   transform: translateY(-7px);
 }
+
+#includeDeadlines {
+  margin-top: 2%;
+}

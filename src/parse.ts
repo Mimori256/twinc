@@ -462,7 +462,8 @@ const addDeadlines = (): string => {
 export const parseCSV = (
   tmpidList: string[],
   kdb: any,
-  isChecked: boolean
+  isChecked: boolean,
+  isFromKdbAlt: boolean
 ): string => {
   let output: string =
     "BEGIN:VCALENDAR\nPRODID:-//gam0022//TwinC 1.0//EN\nVERSION:2.0\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\nX-WR-CALNAME:授業時間割\nX-WR-TIMEZONE:Asia/Tokyo\nX-WR-CALDESC:授業時間割\nBEGIN:VTIMEZONE\nTZID:Asia/Tokyo\nX-LIC-LOCATION:Asia/Tokyo\nBEGIN:STANDARD\nTZOFFSETFROM:+0900\nTZOFFSETTO:+0900\nTZNAME:JST\nDTSTART:19700102T000000\nEND:STANDARD\nEND:VTIMEZONE\n";
@@ -477,9 +478,16 @@ export const parseCSV = (
   const eventEnd: string = "\nEND:VEVENT\n";
   let courseList: any = [];
   let isABC: boolean;
+  let idListLength;
+
+  if (isFromKdbAlt) {
+    idListLength = idList.length;
+  } else {
+    idListLength = idList.length - 1;
+  }
 
   //Search courses
-  for (let i: number = 0; i < idList.length - 1; i++) {
+  for (let i: number = 0; i < idListLength; i++) {
     try {
       courseList.push(kdb[idList[i]]);
     } catch (error) {

@@ -73,12 +73,12 @@ const createICS = (csv: Blob) => {
         .map((x) => x.replace('"', ""))
         .filter((x, i, self) => self.indexOf(x) === i);
       idList = tmpList;
-      output += parseCSV(idList, kdb, isChecked);
+      output += parseCSV(idList, kdb, isChecked, true);
     } else {
       idList = fileContent
         .split("\n")
         .filter((x, i, self) => self.indexOf(x) === i);
-      output += parseCSV(idList, kdb, isChecked);
+      output += parseCSV(idList, kdb, isChecked, false);
     }
   };
   interval = setInterval(function () {

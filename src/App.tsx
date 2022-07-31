@@ -125,7 +125,7 @@ function App() {
       <br />
       <input id="includeDeadlines" type="checkbox" name="includeDeadlines" />
       <label htmlFor="includeDeadlines">
-        事前登録・履修登録締切日も追加する
+        事前登録・履修登録締切日を追加しない
       </label>
       <span className="notice">
         <span className="warn">

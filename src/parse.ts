@@ -550,7 +550,9 @@ export const parseCSV = (
   }
 
   //Add register deadlines to the calendar if checked
-
-  return output + addDeadlines();
+  if (!isChecked) {
+    output += addDeadlines();
+  }
+  return output;
 };
 export default parseCSV;

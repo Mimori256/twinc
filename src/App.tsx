@@ -1,21 +1,14 @@
 import React from "react";
 import "./App.css";
+import { createICS } from "./createICS";
 //import { parse } from "node:path/win32";
-import kdb from "./assets/kdb.json";
-import parseCSV from "./parse";
-
 declare global {
   interface Navigator {
     msSaveBlob?: (blob: any, defaultName?: string) => boolean;
   }
 }
 
-let interval: NodeJS.Timeout;
-
 const downloadCSV = (output: string) => {
-  clearInterval(interval);
-  output += "END:VCALENDAR";
-
   const now = new Date();
   const hour = ("0" + now.getHours()).slice(-2);
   const minute = ("0" + now.getMinutes()).slice(-2);
@@ -40,56 +33,10 @@ const downloadCSV = (output: string) => {
   }
 };
 
-const createICS = (csv: Blob) => {
-  let fileContent;
-  let idList: string[] = [];
-  let fileNameList: string[] = [];
-  let tmpList;
-  let output: string = "";
-  let isChecked: boolean;
-
-  //Check if the checkbox is checked
-  let checkboxElement = document.getElementById("includeDeadlines");
-  //TODO: チェックボックスの判定作成
-  const checkBox = document.querySelector(
-    "input[type='checkbox']"
-  ) as HTMLInputElement;
-
-  if (checkBox && checkBox.checked) {
-    isChecked = true;
-  } else {
-    isChecked = false;
-  }
-
-  // Create ICS file
-  let reader = new FileReader();
-  reader.readAsText(csv);
-  reader.onload = () => {
-    fileContent = String(reader.result);
-    //Check if the uploaded file is from KdBAlt
-    if (fileContent?.slice(0, 1) === "科") {
-      tmpList = fileContent.split("\n").filter((x) => x.slice(0, 1) === '"');
-      tmpList = tmpList
-        .map((x) => x.replace('"', ""))
-        .filter((x, i, self) => self.indexOf(x) === i);
-      idList = tmpList;
-      output += parseCSV(idList, kdb, isChecked, true);
-    } else {
-      idList = fileContent
-        .split("\n")
-        .filter((x, i, self) => self.indexOf(x) === i);
-      output += parseCSV(idList, kdb, isChecked, false);
-    }
-  };
-  interval = setInterval(function () {
-    if (output !== "") {
-      downloadCSV(output);
-    }
-  }, 100);
-};
-
-const onFileStateChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
-  let idList: string[] = [];
+const onFileStateChanged = async (
+  event: React.ChangeEvent<HTMLInputElement>,
+  ifDeadlinesExcluded: boolean
+) => {
   if (event.currentTarget.files !== null) {
     const file = (event.currentTarget as HTMLInputElement).files![0];
     if (!file) {
@@ -100,13 +47,16 @@ const onFileStateChanged = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!file.name.endsWith(".csv")) {
       window.alert("CSVファイルをアップロードしてください");
       return;
-    } else {
-      const idList = createICS(file);
-    }
+    } else
+      createICS(file, !ifDeadlinesExcluded).then((ICSFile) => {
+        if (ICSFile) downloadCSV(ICSFile);
+      });
   }
 };
 
 function App() {
+  const ifDeadlinesExcluded = React.useRef<HTMLInputElement>(null);
+
   return (
     <div className="App">
       <h1>TwinC</h1>
@@ -119,11 +69,18 @@ function App() {
           type="file"
           id="fileUpload"
           accept=".csv"
-          onChange={onFileStateChanged}
+          onChange={(e) =>
+            onFileStateChanged(e, !!ifDeadlinesExcluded.current?.checked)
+          }
         ></input>
       </label>
       <br />
-      <input id="includeDeadlines" type="checkbox" name="includeDeadlines" />
+      <input
+        id="includeDeadlines"
+        type="checkbox"
+        name="includeDeadlines"
+        ref={ifDeadlinesExcluded}
+      />
       <label htmlFor="includeDeadlines">
         事前登録・履修登録締切日を追加しない
       </label>

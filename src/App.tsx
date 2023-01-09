@@ -48,7 +48,7 @@ const onFileStateChanged = async (
       window.alert("CSVファイルをアップロードしてください");
       return;
     } else
-      createICS(file, !ifDeadlinesExcluded).then((ICSFile) => {
+      createICS(file, ifDeadlinesExcluded).then((ICSFile) => {
         if (ICSFile) downloadCSV(ICSFile);
       });
   }

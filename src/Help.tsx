@@ -140,6 +140,20 @@ const Help: React.FC = () => {
           </a>
           に連絡いただけるとありがたいです。
         </p>
+        <span className="contributors">
+          Contributed by
+          <a href="https://github.com/Mimori256" target="_blank" rel="noopener">
+            Mimori256
+          </a>
+          ,
+          <a
+            href="https://github.com/yudukikun5120"
+            target="_blank"
+            rel="noopener"
+          >
+            yudukikun5120
+          </a>
+        </span>
       </div>
     </div>
   );

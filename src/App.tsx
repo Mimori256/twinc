@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { createICS } from "./createICS";
+import { createICS } from "./convertToICS/createICS";
 //import { parse } from "node:path/win32";
 declare global {
   interface Navigator {

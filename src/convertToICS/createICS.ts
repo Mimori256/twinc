@@ -1,5 +1,5 @@
 import parseCSV from "./parse";
-import kdb from "./assets/kdb.json";
+import kdb from "./kdb.json";
 
 const createICS = (csv: Blob, ifDeadlinesIncluded: boolean) =>
   new Promise<string>((resolve) => {

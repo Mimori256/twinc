@@ -101,6 +101,9 @@ const classEndPeriod: string[] = [
   "210000",
 ];
 
+const springABCEndDate = "20220802T130000Z";
+const fallABCEndDate = "20230207T130000Z";
+
 const springAHolidays: string[] = [
   "20220502",
   "20220503",
@@ -218,8 +221,32 @@ const deadlinesDetail: string[] = [
   "秋C履修登録締切日",
 ];
 
+//time stamp is supposed to be a date several days before the date of the first class
+const timeStamp: string = "20220408T000000";
+
 const addZero = (str: string): string => {
   return str.length === 1 && str !== "T" ? "0" + str : str;
+};
+
+const createDateFormat = (
+  DTSTART: string,
+  beginDate: string,
+  beginPeriod: string,
+  DTEND: string,
+  endPeriod: string
+): string => {
+  return "".concat(
+    DTSTART,
+    beginDate,
+    "T",
+    beginPeriod,
+    "\n",
+    DTEND,
+    beginDate,
+    "T",
+    endPeriod,
+    "\n"
+  );
 };
 
 const isAvailableModule = (module: string): boolean => {
@@ -291,44 +318,22 @@ const getSpan = (module: string, period: string): string => {
   }
 
   //Get the start and end time of the course
-  let beginPeriod: string = classBeginPeriod[parseInt(period.slice(1, 2))];
-  let endPeriod: string = classEndPeriod[parseInt(period.slice(-1))];
+  const beginPeriod: string = classBeginPeriod[parseInt(period.slice(1, 2))];
+  const endPeriod: string = classEndPeriod[parseInt(period.slice(-1))];
 
-  return (
-    DTSTART +
-    beginDate +
-    "T" +
-    beginPeriod +
-    "\n" +
-    DTEND +
-    beginDate +
-    "T" +
-    endPeriod +
-    "\n"
-  );
+  return createDateFormat(DTSTART, beginDate, beginPeriod, DTEND, endPeriod);
 };
 
 const addReschedule = (index: number, period: string): string => {
-  let beginDate: string = rescheduledDateList[index];
+  const beginDate: string = rescheduledDateList[index];
   const DTSTART: string = "DTSTART;TZID=Asia/Tokyo:";
   const DTEND: string = "DTEND;TZID=Asia/Tokyo:";
 
   //Get the start and end time of the course
-  let beginPeriod: string = classBeginPeriod[parseInt(period.slice(1, 2))];
-  let endPeriod: string = classEndPeriod[parseInt(period.slice(-1))];
+  const beginPeriod: string = classBeginPeriod[parseInt(period.slice(1, 2))];
+  const endPeriod: string = classEndPeriod[parseInt(period.slice(-1))];
 
-  return (
-    DTSTART +
-    beginDate +
-    "T" +
-    beginPeriod +
-    "\n" +
-    DTEND +
-    beginDate +
-    "T" +
-    endPeriod +
-    "\n"
-  );
+  return createDateFormat(DTSTART, beginDate, beginPeriod, DTEND, endPeriod);
 };
 
 const getRepeat = (module: string, period: string): string => {
@@ -350,7 +355,7 @@ const getABCRepeat = (module: string, period: string): string => {
   let rrule: string = "RRULE:FREQ=WEEKLY;UNTIL=";
   let exdate: string;
 
-  rrule += module[0] === "春" ? "20220802T130000Z;" : "20230207T130000Z;";
+  rrule += module[0] === "春" ? springABCEndDate : fallABCEndDate;
 
   rrule += "BYDAY=" + engWeekday[period[0]] + "\n";
   exdate = removeABCHolidays(module, period);
@@ -358,16 +363,6 @@ const getABCRepeat = (module: string, period: string): string => {
 };
 
 const getMisc = (name: string, classroom: string, desc: string): string => {
-  //Create a timestamp for this year
-  const year: string = "2022";
-  const month: string = "4";
-  const date: string = "8";
-  const hour: string = "0";
-  const minute: string = "0";
-
-  const timeStampList: string[] = [year, month, date, "T", hour, minute, "00"];
-  const timeStamp: string = timeStampList.map((x) => addZero(x)).join("");
-
   const dtstamp: string = "DTSTAMP:" + timeStamp;
   const created: string = "CREATED:" + timeStamp;
   const description: string = "DESCRIPTION:" + desc;

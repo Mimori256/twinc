@@ -18,22 +18,36 @@ const Help: React.FC = () => {
           <a
             href="https://twins.tsukuba.ac.jp/campusweb/campussmart.do"
             target="_blank"
-            rel="nooperner"
+            rel="nooperner noreferrer"
           >
             TWINS
           </a>
           にログインして、履修→カレンダーにしたいモジュールの下のダウンロードボタンから、CSVファイルを出力してください。
         </p>
-        <img src={twinc1} width="75%"></img>
-        <p>(ちなみに、このファイルはTwin:teの授業登録にも使えます)</p>
+        <img
+          src={twinc1}
+          width="75%"
+          alt="TWINSのCSVファイルをダウンロードする箇所"
+        ></img>
+        <p>
+          (ちなみに、このファイルは
+          <a
+            href="https://www.twinte.net/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Twin:te
+          </a>
+          の授業登録にも使えます)
+        </p>
         <p>KdBもどきからカレンダーを作る場合</p>
         1．
         <a
           href="https://make-it-tsukuba.github.io/alternative-tsukuba-kdb/"
           target="_blank"
-          rel="nooperner"
+          rel="nooperner noreferrer"
         >
-          KdB もどき
+          KdBもどき
         </a>
         にPCでアクセスする
         <br />
@@ -43,34 +57,49 @@ const Help: React.FC = () => {
         <br />
         4．画面最下部の「CSVダウンロード」をクリックする
         <p>
-          次に、そのファイルをTwinCのトップページで選択してから、ダウンロードボタンを押して、ファイルをダウンロードし
-          てください。
+          次に、そのファイルをTwinCの「ファイル選択」ボタンから選択すると、カレンダーファイルのダウンロードが自動で始まります。
         </p>
-        <img src={download} width="75%" />
+        <img
+          src={download}
+          width="50%"
+          alt="カレンダーファイルのダウンロード方法"
+        />
         <p>ファイル名は(ダウンロード時刻) + twinc.icsとなっています</p>
         <p>
           ここではGoogleカレンダーを例にします。Macのカレンダーなどに追加したい場合は自分で調べてください。
         </p>
         <p>
-          <a href="https://calendar.google.com/" target="_blank" rel="noopener">
+          <a
+            href="https://calendar.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Googleカレンダーのトップページ
           </a>
           の右上から、設定を開いてください。
         </p>
-        <img src={twinc2} width="75%" />
+        <img src={twinc2} width="75%" alt="Googleカレンダーの設定の箇所" />
         <p>
           そして、カレンダーを追加→新しいカレンダーを作成を選択して、カレンダーに名前をつけて、カレンダーを作成してく
           ださい。(2回目以降は新しく作る必要はありません)
         </p>
-        <img src={twinc3} width="75%" />
+        <img
+          src={twinc3}
+          width="75%"
+          alt="Googleカレンダーで新しいカレンダーを作成する箇所"
+        />
         <p>
-          カレンダーが生成されるまで待ってから、インポート/エクスポート→インポートから、カレンダーに追加で、
+          カレンダーが生成されるまで待ち、インポート/エクスポート→インポートから、カレンダーに追加で、
           <span id="warn">
             <u>自分が作成したカレンダーを選択してから</u>
           </span>
           パソコンからファイルを選択をクリックして、ダウンロードしたファイルを選択、インポートをクリックしてください
         </p>
-        <img src={twinc4} width="75%" />
+        <img
+          src={twinc4}
+          width="75%"
+          alt="Googleカレンダーで新しいカレンダーをインポートする箇所"
+        />
         <p>
           間違えて、他の予定が入っているカレンダーに追加してしまうと、後で削除したいときに削除するのが面倒になってしまうので、注意してください
         </p>
@@ -78,16 +107,16 @@ const Help: React.FC = () => {
           これで完成です!
           他のモジュールも追加したい場合も、同様の手順でファイルを最初に作ったカレンダーにインポートしてください
         </p>
-        <img src={twinc5} width="75%" />
+        <img src={twinc5} width="75%" alt="完成例" />
         <div className="notice">
           <h2>注意</h2>
           <p>各モジュールの試験期間と試験日には、授業予定が登録されません</p>
           <p>
             モジュールの期間は、
             <a
-              href="https://www.tsukuba.ac.jp/campuslife/calendar-school/pdf/2021-grad-tsukuba.pdf"
+              href="https://www.tsukuba.ac.jp/campuslife/calendar-school/"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               学年暦
             </a>
@@ -126,7 +155,7 @@ const Help: React.FC = () => {
           <a
             href="https://github.com/Mimori256/twinc"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             GitHub
           </a>
@@ -134,7 +163,7 @@ const Help: React.FC = () => {
           <a
             href="https://twitter.com/OkppGbFhZoJQRgL"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             Twitter
           </a>
@@ -142,14 +171,18 @@ const Help: React.FC = () => {
         </p>
         <span className="contributors">
           Contributed by
-          <a href="https://github.com/Mimori256" target="_blank" rel="noopener">
+          <a
+            href="https://github.com/Mimori256"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Mimori256
           </a>
           ,
           <a
             href="https://github.com/yudukikun5120"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             yudukikun5120
           </a>

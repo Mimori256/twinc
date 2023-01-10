@@ -96,9 +96,9 @@ function App() {
         <p>
           モジュールの期間は
           <a
-            href="https://www.tsukuba.ac.jp/campuslife/calendar-school/pdf/2022-undergrad-grad-tsukuba.pdf"
+            href="https://www.tsukuba.ac.jp/campuslife/calendar-school/"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             学年暦
           </a>

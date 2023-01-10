@@ -35,7 +35,7 @@ const downloadCSV = (output: string) => {
 
 const onFileStateChanged = async (
   event: React.ChangeEvent<HTMLInputElement>,
-  ifDeadlinesExcluded: boolean
+  ifDeadlinesIncluded: boolean
 ) => {
   if (event.currentTarget.files !== null) {
     const file = (event.currentTarget as HTMLInputElement).files![0];
@@ -48,14 +48,14 @@ const onFileStateChanged = async (
       window.alert("CSVファイルをアップロードしてください");
       return;
     } else
-      createICS(file, ifDeadlinesExcluded).then((ICSFile) => {
+      createICS(file, ifDeadlinesIncluded).then((ICSFile) => {
         if (ICSFile) downloadCSV(ICSFile);
       });
   }
 };
 
 function App() {
-  const ifDeadlinesExcluded = React.useRef<HTMLInputElement>(null);
+  const ifDeadlinesIncluded = React.useRef<HTMLInputElement>(null);
 
   return (
     <div className="App">
@@ -70,7 +70,7 @@ function App() {
           id="fileUpload"
           accept=".csv"
           onChange={(e) =>
-            onFileStateChanged(e, !!ifDeadlinesExcluded.current?.checked)
+            onFileStateChanged(e, !!ifDeadlinesIncluded.current?.checked)
           }
         ></input>
       </label>
@@ -79,7 +79,7 @@ function App() {
         id="includeDeadlines"
         type="checkbox"
         name="includeDeadlines"
-        ref={ifDeadlinesExcluded}
+        ref={ifDeadlinesIncluded}
       />
       <label htmlFor="includeDeadlines">
         事前登録・履修登録締切日を追加しない

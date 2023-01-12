@@ -65,7 +65,7 @@ const onFileStateChanged = async (
 };
 
 function App() {
-  const ifDeadlinesIncluded = React.useRef<HTMLInputElement>(null);
+  const ifDeadlinesExcluded = React.useRef<HTMLInputElement>(null);
 
   return (
     <div className="App">
@@ -80,7 +80,7 @@ function App() {
           id="fileUpload"
           accept=".csv"
           onChange={(e) =>
-            onFileStateChanged(e, !!ifDeadlinesIncluded.current?.checked)
+            onFileStateChanged(e, !ifDeadlinesExcluded.current?.checked)
           }
         ></input>
       </label>
@@ -89,7 +89,7 @@ function App() {
         id="includeDeadlines"
         type="checkbox"
         name="includeDeadlines"
-        ref={ifDeadlinesIncluded}
+        ref={ifDeadlinesExcluded}
       />
       <label htmlFor="includeDeadlines">
         事前登録・履修登録締切日を追加しない

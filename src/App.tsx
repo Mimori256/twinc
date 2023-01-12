@@ -33,6 +33,16 @@ const downloadCSV = (output: string) => {
   }
 };
 
+const convertCSVToICS = (csv: Blob, ifDeadlinesIncluded: boolean) =>
+  new Promise<string>((resolve) => {
+    const reader = new FileReader();
+    reader.readAsText(csv);
+    reader.onload = () => {
+      const fileContent = String(reader.result);
+      resolve(createICS(fileContent, ifDeadlinesIncluded));
+    };
+  });
+
 const onFileStateChanged = async (
   event: React.ChangeEvent<HTMLInputElement>,
   ifDeadlinesIncluded: boolean
@@ -48,7 +58,7 @@ const onFileStateChanged = async (
       window.alert("CSVファイルをアップロードしてください");
       return;
     } else
-      createICS(file, ifDeadlinesIncluded).then((ICSFile) => {
+      convertCSVToICS(file, ifDeadlinesIncluded).then((ICSFile) => {
         if (ICSFile) downloadCSV(ICSFile);
       });
   }

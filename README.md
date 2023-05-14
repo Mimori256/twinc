@@ -8,4 +8,5 @@
 IssueおよびPRはいつでも受け付けています。
 
 ### その他
-科目番号とその科目のモジュール、曜時限のデータは、１週間おきにGithub Actionsによって自動で更新されます。
+科目番号とその科目のモジュール、曜時限のデータは、１週間おきにGithub Actionsによって自動で更新されます。  
+KdBから、科目情報を取得するスクリプト[kdb-parse](https://github.com/Mimori256/kdb-parse) によって生成された、[kdb_twinc.json](https://github.com/Mimori256/kdb-parse/blob/main/kdb_twinc.json) を取得して、各データを更新しています。

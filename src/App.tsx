@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-const debugMode = true;
+const debugMode = false;
 
 const downloadCSV = (output: string) => {
   const now = new Date();

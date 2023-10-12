@@ -8,6 +8,8 @@ declare global {
   }
 }
 
+const debugMode = true;
+
 const downloadCSV = (output: string) => {
   const now = new Date();
   const hour = ("0" + now.getHours()).slice(-2);
@@ -20,7 +22,9 @@ const downloadCSV = (output: string) => {
       new Blob([output], { type: "text/plain" }),
       fileName
     );
-    window.location.reload();
+    if (!debugMode) {
+      window.location.reload();
+    }
   } else {
     let a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([output], { type: "text/plain" }));
@@ -28,7 +32,9 @@ const downloadCSV = (output: string) => {
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    window.location.reload();
+    if (!debugMode) {
+      window.location.reload();
+    }
     return true;
   }
 };

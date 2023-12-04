@@ -35,6 +35,8 @@ jobs:
         run: cd src
       - name: Get dependencies from github
         run: git clone https://github.com/Mimori256/twinc-core.git
+      - name: Rename the folder
+        run: mv twinc-core core
       - name: Go back to the root folder
         run: cd ..
       - name: Build

@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import Help from "./Help";
 import reportWebVitals from "./reportWebVitals";
 
 /*root.render(
@@ -14,7 +13,6 @@ import reportWebVitals from "./reportWebVitals";
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <Help />
   </React.StrictMode>,
   document.getElementById("root")
 );

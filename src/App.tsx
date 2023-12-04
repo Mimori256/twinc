@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Help from "./components/Help";
 import { createICS } from "./core/createICS";
 //import { parse } from "node:path/win32";
 declare global {
@@ -126,6 +127,7 @@ function App() {
           学年暦に表示されている振替には対応していますが、それ以外の振替には対応していません
         </p>
       </span>
+      <Help />
     </div>
   );
 }

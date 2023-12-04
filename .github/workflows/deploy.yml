@@ -2,7 +2,7 @@ name: Deploy static content to Pages
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
 
   workflow_dispatch:
 
@@ -11,9 +11,8 @@ permissions:
   pages: write
   id-token: write
 
-# 1 つの同時デプロイメントを可能にする
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: true
 
 jobs:
@@ -29,9 +28,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'npm'
+          cache: "npm"
       - name: Install dependencies
         run: npm install
+      - name: Move to the src folder
+        run: cd src
+      - name: Get dependencies from github
+        run: git clone https://github.com/Mimori256/twinc-core.git
+      - name: Go back to the root folder
+        run: cd ..
       - name: Build
         run: npm run build
       - name: Setup Pages
@@ -39,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: './dist'
+          path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2

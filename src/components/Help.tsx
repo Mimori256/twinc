@@ -6,9 +6,11 @@ import twinc4 from "../assets/img/twinc4.png";
 import twinc5 from "../assets/img/twinc5.png";
 import download from "../assets/img/download.png";
 
-const Help: React.FC = () => {
+import { helpStyle } from "./styles";
+
+const Help = () => {
   return (
-    <div className="Help">
+    <div className={helpStyle}>
       <h2>Help</h2>
       <div className="instruction">
         <p>以下、パソコンでの使用を想定しています</p>
@@ -89,7 +91,7 @@ const Help: React.FC = () => {
         />
         <p>
           カレンダーが生成されるまで待ち、インポート/エクスポート→インポートから、カレンダーに追加で、
-          <span id="warn">
+          <span className="warn">
             <u>自分が作成したカレンダーを選択してから</u>
           </span>
           パソコンからファイルを選択をクリックして、ダウンロードしたファイルを選択、インポートをクリックしてください
@@ -133,16 +135,14 @@ const Help: React.FC = () => {
           <p>
             集中、応談、土日、夏季休暇といった特別な日程には対応していません
           </p>
-          <span id="warn">
-            <p>テストはしていますが、100%の正確性は保証できません</p>
-          </span>
-          <span id="warn">
-            <p>このアプリが原因で遅刻しても責任は負いかねます</p>
-          </span>
+          <p className="warn">
+            テストはしていますが、100%の正確性は保証できません
+          </p>
+          <p className="warn">このアプリが原因で遅刻しても責任は負いかねます</p>
         </div>
       </div>
       <div className="About">
-        <h2>このページについて</h2>
+        <h2>About</h2>
         <p>
           このページは、有志の筑波大生によって作られています。大学公式ではありません
         </p>
@@ -168,24 +168,6 @@ const Help: React.FC = () => {
           </a>
           に連絡いただけるとありがたいです。
         </p>
-        <span className="contributors">
-          Contributed by
-          <a
-            href="https://github.com/Mimori256"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Mimori256
-          </a>
-          ,
-          <a
-            href="https://github.com/yudukikun5120"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            yudukikun5120
-          </a>
-        </span>
       </div>
     </div>
   );

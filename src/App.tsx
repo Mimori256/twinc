@@ -1,61 +1,49 @@
-import React from "react";
-import "./App.css";
+import React, { useState, useEffect } from "react";
+import FileSelector from "./components/FileSelector";
+import { SmallHelp } from "./components/SmallHelp";
 import Help from "./components/Help";
+import Footer from "./components/Footer";
 import { createICS } from "./core/createICS";
-//import { parse } from "node:path/win32";
+import { coreStyle } from "./components/styles";
+import downloadCSV from "./components/downloadCSV";
+
 declare global {
   interface Navigator {
     msSaveBlob?: (blob: any, defaultName?: string) => boolean;
   }
 }
 
-const debugMode = false;
+function App() {
+  const [noDeadlines, setNoDeadlines] = useState(false);
+  const [fileContent, setFileContent] = useState("");
+  const debugMode = false;
 
-const downloadCSV = (output: string) => {
-  const now = new Date();
-  const hour = ("0" + now.getHours()).slice(-2);
-  const minute = ("0" + now.getMinutes()).slice(-2);
-  const second = ("0" + now.getSeconds()).slice(-2);
-  const fileName = `${hour}-${minute}-${second}${"twinc.ics"}`;
-
-  if (window.navigator.msSaveBlob) {
-    window.navigator.msSaveBlob(
-      new Blob([output], { type: "text/plain" }),
-      fileName
-    );
-    if (!debugMode) {
-      window.location.reload();
+  const processFileContent = async () => {
+    if (fileContent) {
+      const ICSFile = await createICS(fileContent, !noDeadlines);
+      if (ICSFile) downloadCSV(ICSFile, debugMode);
     }
-  } else {
-    let a = document.createElement("a");
-    a.href = URL.createObjectURL(new Blob([output], { type: "text/plain" }));
-    a.download = fileName;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    if (!debugMode) {
-      window.location.reload();
-    }
-    return true;
-  }
-};
+  };
 
-const convertCSVToICS = (csv: Blob, ifDeadlinesIncluded: boolean) =>
-  new Promise<string>((resolve) => {
-    const reader = new FileReader();
-    reader.readAsText(csv);
-    reader.onload = () => {
-      const fileContent = String(reader.result);
-      resolve(createICS(fileContent, ifDeadlinesIncluded));
-    };
-  });
+  useEffect(() => {
+    processFileContent();
+  }, [fileContent]);
 
-const onFileStateChanged = async (
-  event: React.ChangeEvent<HTMLInputElement>,
-  ifDeadlinesIncluded: boolean
-) => {
-  if (event.currentTarget.files !== null) {
-    const file = (event.currentTarget as HTMLInputElement).files![0];
+  const onCheckboxChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNoDeadlines(e.target.checked);
+  };
+
+  const readFile = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = () => resolve(String(reader.result));
+      reader.onerror = reject;
+    });
+  };
+
+  const onFileSelected = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = (e.currentTarget as HTMLInputElement).files![0];
     if (!file) {
       window.alert("ファイルが選択されていません");
       return;
@@ -64,70 +52,35 @@ const onFileStateChanged = async (
     if (!file.name.endsWith(".csv")) {
       window.alert("CSVファイルをアップロードしてください");
       return;
-    } else
-      convertCSVToICS(file, ifDeadlinesIncluded).then((ICSFile) => {
-        if (ICSFile) downloadCSV(ICSFile);
-      });
-  }
-};
+    }
 
-function App() {
-  const ifDeadlinesExcluded = React.useRef<HTMLInputElement>(null);
+    try {
+      const fileContent = await readFile(file);
+      setFileContent(fileContent);
+    } catch (err) {
+      console.error("Failed to read file", err);
+    }
+  };
 
   return (
-    <div className="App">
+    <div className={coreStyle}>
       <h1>TwinC</h1>
       <p>TWINSまたはKdBもどきのCSVファイルを選択してください</p>
       <h4>詳しい使い方は下にスクロールして、Helpを参照してください</h4>
-      <div id="selectedFiles"></div>
-      <label id="fileUpload">
-        ファイル選択
-        <input
-          type="file"
-          id="fileUpload"
-          accept=".csv"
-          onChange={(e) =>
-            onFileStateChanged(e, !ifDeadlinesExcluded.current?.checked)
-          }
-        ></input>
-      </label>
-      <br />
+      <FileSelector onFileChange={onFileSelected} />
       <input
         id="includeDeadlines"
         type="checkbox"
         name="includeDeadlines"
-        ref={ifDeadlinesExcluded}
+        checked={noDeadlines}
+        onChange={onCheckboxChanged}
       />
       <label htmlFor="includeDeadlines">
         事前登録・履修登録締切日を追加しない
       </label>
-      <span className="notice">
-        <span className="warn">
-          <p>
-            生成したICSファイルは新しく作ったカレンダーにインポートしてください！
-          </p>
-        </span>
-        <p>
-          テスト期間中は授業によって予定が変更されることがあります。気をつけてください
-        </p>
-        <p>
-          モジュールの期間は
-          <a
-            href="https://www.tsukuba.ac.jp/campuslife/calendar-school/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            学年暦
-          </a>
-          に基づいています
-        </p>
-        <p>祝日に授業は登録されません</p>
-        <p>通年授業は現在登録に対応していません</p>
-        <p>
-          学年暦に表示されている振替には対応していますが、それ以外の振替には対応していません
-        </p>
-      </span>
+      <SmallHelp />
       <Help />
+      <Footer />
     </div>
   );
 }

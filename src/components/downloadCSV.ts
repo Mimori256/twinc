@@ -11,13 +11,13 @@ const downloadCSV = (output: string, debugMode: boolean) => {
   if (window.navigator.msSaveBlob) {
     window.navigator.msSaveBlob(
       new Blob([output], { type: "text/plain" }),
-      fileName
+      fileName,
     );
     if (!debugMode) {
       window.location.reload();
     }
   } else {
-    let a = document.createElement("a");
+    const a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([output], { type: "text/plain" }));
     a.download = fileName;
     document.body.appendChild(a);

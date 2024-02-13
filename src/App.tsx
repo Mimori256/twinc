@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
+import createIcs from "twinc-core-ics-creator";
 import FileSelector from "./components/FileSelector";
-import { SmallHelp } from "./components/SmallHelp";
-import Help from "./components/Help";
 import Footer from "./components/Footer";
-import { createICS } from "./core/createICS";
-import { coreStyle } from "./components/styles";
+import Help from "./components/Help";
+import { SmallHelp } from "./components/SmallHelp";
 import downloadCSV from "./components/downloadCSV";
+import { coreStyle } from "./components/styles";
 
 declare global {
   interface Navigator {
@@ -20,7 +20,7 @@ function App() {
 
   const processFileContent = async () => {
     if (fileContent) {
-      const ICSFile = await createICS(fileContent, !noDeadlines);
+      const ICSFile = await createIcs(fileContent, !noDeadlines);
       if (ICSFile) downloadCSV(ICSFile, debugMode);
     }
   };

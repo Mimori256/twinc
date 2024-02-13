@@ -168,11 +168,11 @@ const Help = () => {
           </a>
           または、
           <a
-            href="https://twitter.com/OkppGbFhZoJQRgL"
+            href="https://x.com/mimorimori256"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Twitter
+            X(旧Twitter)
           </a>
           に連絡いただけるとありがたいです。
         </p>

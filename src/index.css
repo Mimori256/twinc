@@ -6,6 +6,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 0 8rem;
+  @media (max-width: 768px) {
+    padding: 0 2rem;
+  }
 }
 
 code {

@@ -52,6 +52,6 @@
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
     "@types/react-router-dom": "^5.3.3",
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^5.0.0"
   }
 }

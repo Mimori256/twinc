@@ -4,9 +4,9 @@ const downloadCSV = (output: string, debugMode: boolean) => {
     .getMinutes()
     .toString()
     .padStart(2, "0")}-${now
-    .getSeconds()
-    .toString()
-    .padStart(2, "0")}twinc.ics`;
+      .getSeconds()
+      .toString()
+      .padStart(2, "0")}twinc.ics`;
 
   if (window.navigator.msSaveBlob) {
     window.navigator.msSaveBlob(

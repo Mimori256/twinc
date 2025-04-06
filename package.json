@@ -13,7 +13,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
-    "twinc-core-ics-creator": "^0.1.4"
+    "twinc-core-ics-creator": "^0.1.7"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",

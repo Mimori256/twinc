@@ -24,7 +24,7 @@ devDependencies:
     version: 1.9.4
   '@linaria/babel-preset':
     specifier: ^5.0.4
-    version: 5.0.4(typescript@5.8.2)
+    version: 5.0.4(typescript@5.9.2)
   '@linaria/core':
     specifier: ^5.0.2
     version: 5.0.2
@@ -33,7 +33,7 @@ devDependencies:
     version: 5.0.3(react@18.3.1)
   '@linaria/vite':
     specifier: ^5.0.4
-    version: 5.0.4(typescript@5.8.2)(vite@5.4.20)
+    version: 5.0.4(typescript@5.9.2)(vite@5.4.20)
   '@types/jest':
     specifier: ^29.0.0
     version: 29.5.14
@@ -57,13 +57,13 @@ devDependencies:
     version: 3.2.3
   typescript:
     specifier: ^5.0.0
-    version: 5.8.2
+    version: 5.9.2
   vite:
     specifier: ^5.0.0
     version: 5.4.20(@types/node@22.18.3)
   vite-tsconfig-paths:
     specifier: ^4.2.1
-    version: 4.3.2(typescript@5.8.2)(vite@5.4.20)
+    version: 4.3.2(typescript@5.9.2)(vite@5.4.20)
 
 packages:
 
@@ -1683,7 +1683,7 @@ packages:
       '@jridgewell/sourcemap-codec': 1.5.5
     dev: true
 
-  /@linaria/babel-preset@5.0.4(typescript@5.8.2):
+  /@linaria/babel-preset@5.0.4(typescript@5.9.2):
     resolution: {integrity: sha512-OMhlD6gc/+6DFLkadoavlxCtTIElo/UdDMeQH6I/CAL3hgfmHyIXJPrGObTa7jvQKddUaKvFIHGAVB7pz6J8Qg==}
     engines: {node: '>=16.0.0'}
     dependencies:
@@ -1698,7 +1698,7 @@ packages:
       '@linaria/shaker': 5.0.3
       '@linaria/tags': 5.0.2
       '@linaria/utils': 5.0.2
-      cosmiconfig: 8.3.6(typescript@5.8.2)
+      cosmiconfig: 8.3.6(typescript@5.9.2)
       happy-dom: 10.8.0
       source-map: 0.7.4
       stylis: 3.5.4
@@ -1794,13 +1794,13 @@ packages:
       - supports-color
     dev: true
 
-  /@linaria/vite@5.0.4(typescript@5.8.2)(vite@5.4.20):
+  /@linaria/vite@5.0.4(typescript@5.9.2)(vite@5.4.20):
     resolution: {integrity: sha512-T3gPaUvf4sfM2D74ZAehTWSE6mLZ/qhzWzwid1siKPOAW1F4m1mYjkdL7dPZGc97pg+JaFBnHXXIOfz5/5fwBQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       vite: '>=3.2.7'
     dependencies:
-      '@linaria/babel-preset': 5.0.4(typescript@5.8.2)
+      '@linaria/babel-preset': 5.0.4(typescript@5.9.2)
       '@linaria/logger': 5.0.0
       '@linaria/utils': 5.0.2
       '@rollup/pluginutils': 5.1.4
@@ -2331,7 +2331,7 @@ packages:
       browserslist: 4.24.4
     dev: true
 
-  /cosmiconfig@8.3.6(typescript@5.8.2):
+  /cosmiconfig@8.3.6(typescript@5.9.2):
     resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -2344,7 +2344,7 @@ packages:
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
-      typescript: 5.8.2
+      typescript: 5.9.2
     dev: true
 
   /css.escape@1.5.1:
@@ -3231,7 +3231,7 @@ packages:
       tslib: 2.8.1
     dev: true
 
-  /tsconfck@3.1.5(typescript@5.8.2):
+  /tsconfck@3.1.5(typescript@5.9.2):
     resolution: {integrity: sha512-CLDfGgUp7XPswWnezWwsCRxNmgQjhYq3VXHM0/XIRxhVrKw0M1if9agzryh1QS3nxjCROvV+xWxoJO1YctzzWg==}
     engines: {node: ^18 || >=20}
     hasBin: true
@@ -3241,7 +3241,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      typescript: 5.8.2
+      typescript: 5.9.2
     dev: true
 
   /tslib@2.8.1:
@@ -3252,8 +3252,8 @@ packages:
     resolution: {integrity: sha512-O0pgzeCNQPzi3cWg8n9NBZ5ojsHtJnq+dmlWLcaojlRK+ui5hb0+o7yTmhtXCFfF6MFo93BHRTjvMISbK7NN3A==}
     dev: false
 
-  /typescript@5.8.2:
-    resolution: {integrity: sha512-aJn6wq13/afZp/jT9QZmwEjDqqvSGp1VT5GVg+f/t6/oVyrgXM6BY1h9BRh/O5p3PlUPAe+WuiEZOmb/49RqoQ==}
+  /typescript@5.9.2:
+    resolution: {integrity: sha512-CWBzXQrc/qOkhidw1OzBTQuYRbfyxDXJMVJ1XNwUHGROVmuaeiEm3OslpZ1RV96d7SKKjZKrSJu3+t/xlw3R9A==}
     engines: {node: '>=14.17'}
     hasBin: true
     dev: true
@@ -3312,7 +3312,7 @@ packages:
       picocolors: 1.1.1
     dev: true
 
-  /vite-tsconfig-paths@4.3.2(typescript@5.8.2)(vite@5.4.20):
+  /vite-tsconfig-paths@4.3.2(typescript@5.9.2)(vite@5.4.20):
     resolution: {integrity: sha512-0Vd/a6po6Q+86rPlntHye7F31zA2URZMbH8M3saAZ/xR9QoGN/L21bxEGfXdWmFdNkqPpRdxFT7nmNe12e9/uA==}
     peerDependencies:
       vite: '*'
@@ -3322,7 +3322,7 @@ packages:
     dependencies:
       debug: 4.4.0
       globrex: 0.1.2
-      tsconfck: 3.1.5(typescript@5.8.2)
+      tsconfck: 3.1.5(typescript@5.9.2)
       vite: 5.4.20(@types/node@22.18.3)
     transitivePeerDependencies:
       - supports-color

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import createIcs from "twinc-core-ics-creator";
 import FileSelector from "./components/FileSelector";
 import Footer from "./components/Footer";
@@ -18,16 +18,16 @@ function App() {
   const [fileContent, setFileContent] = useState("");
   const debugMode = false;
 
-  const processFileContent = async () => {
+  const processFileContent = useCallback(async () => {
     if (fileContent) {
       const ICSFile = await createIcs(fileContent, !noDeadlines);
       if (ICSFile) downloadCSV(ICSFile, debugMode);
     }
-  };
+  }, [fileContent, noDeadlines]);
 
   useEffect(() => {
     processFileContent();
-  }, [fileContent]);
+  }, [processFileContent]);
 
   const onCheckboxChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNoDeadlines(e.target.checked);
@@ -43,7 +43,7 @@ function App() {
   };
 
   const onFileSelected = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = (e.currentTarget as HTMLInputElement).files![0];
+    const file = (e.currentTarget as HTMLInputElement).files?.[0];
     if (!file) {
       window.alert("ファイルが選択されていません");
       return;

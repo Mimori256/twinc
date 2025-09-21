@@ -57,12 +57,8 @@ export const fileSelectorStyle = css`
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
-    margin-top: 2.5%;
-    margin-bottom: 4.5%;
-    padding-top: 0.7%;
-    padding-bottom: 0.7%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
+    margin-block: 2.5% 4.5%;
+    padding: 0.7% 0.5%;
   }
 
   #fileUpload:hover {

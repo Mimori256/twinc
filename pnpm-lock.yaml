@@ -12,8 +12,8 @@ dependencies:
     specifier: ^18.0.0
     version: 18.3.1(react@18.3.1)
   react-router-dom:
-    specifier: ^6.3.0
-    version: 6.30.0(react-dom@18.3.1)(react@18.3.1)
+    specifier: ^7.0.0
+    version: 7.9.3(react-dom@18.3.1)(react@18.3.1)
   twinc-core-ics-creator:
     specifier: ^0.1.7
     version: 0.1.7
@@ -1811,11 +1811,6 @@ packages:
       - typescript
     dev: true
 
-  /@remix-run/router@1.23.0:
-    resolution: {integrity: sha512-O3rHJzAQKamUz1fvE0Qaw0xSFqsA/yafi2iqeE0pvdFtCO1viYx8QL6f3Ln/aCCTLxs68SLf0KPM9eSeM8yBnA==}
-    engines: {node: '>=14.0.0'}
-    dev: false
-
   /@rolldown/pluginutils@1.0.0-beta.27:
     resolution: {integrity: sha512-+d0F4MKMCbeVUJwG96uQ4SgAznZNSq93I3V+9NHA4OpvqG8mRCpGdKmK8l/dl02h2CCDHwW2FqilnTyDcAnqjA==}
     dev: true
@@ -2324,6 +2319,11 @@ packages:
   /convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
     dev: true
+
+  /cookie@1.0.2:
+    resolution: {integrity: sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==}
+    engines: {node: '>=18'}
+    dev: false
 
   /core-js-compat@3.41.0:
     resolution: {integrity: sha512-RFsU9LySVue9RTwdDVX/T0e2Y6jRYWXERKElIjpuEOEnxaXffI0X7RUwVzfYLfzuLXSNJDYoRYUAmRUcyln20A==}
@@ -3031,27 +3031,32 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /react-router-dom@6.30.0(react-dom@18.3.1)(react@18.3.1):
-    resolution: {integrity: sha512-x30B78HV5tFk8ex0ITwzC9TTZMua4jGyA9IUlH1JLQYQTFyxr/ZxwOJq7evg1JX1qGVUcvhsmQSKdPncQrjTgA==}
-    engines: {node: '>=14.0.0'}
+  /react-router-dom@7.9.3(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-1QSbA0TGGFKTAc/aWjpfW/zoEukYfU4dc1dLkT/vvf54JoGMkW+fNA+3oyo2gWVW1GM7BxjJVHz5GnPJv40rvg==}
+    engines: {node: '>=20.0.0'}
     peerDependencies:
-      react: '>=16.8'
-      react-dom: '>=16.8'
+      react: '>=18'
+      react-dom: '>=18'
     dependencies:
-      '@remix-run/router': 1.23.0
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      react-router: 6.30.0(react@18.3.1)
+      react-router: 7.9.3(react-dom@18.3.1)(react@18.3.1)
     dev: false
 
-  /react-router@6.30.0(react@18.3.1):
-    resolution: {integrity: sha512-D3X8FyH9nBcTSHGdEKurK7r8OYE1kKFn3d/CF+CoxbSHkxU7o37+Uh7eAHRXr6k2tSExXYO++07PeXJtA/dEhQ==}
-    engines: {node: '>=14.0.0'}
+  /react-router@7.9.3(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-4o2iWCFIwhI/eYAIL43+cjORXYn/aRQPgtFRRZb3VzoyQ5Uej0Bmqj7437L97N9NJW4wnicSwLOLS+yCXfAPgg==}
+    engines: {node: '>=20.0.0'}
     peerDependencies:
-      react: '>=16.8'
+      react: '>=18'
+      react-dom: '>=18'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
     dependencies:
-      '@remix-run/router': 1.23.0
+      cookie: 1.0.2
       react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      set-cookie-parser: 2.7.1
     dev: false
 
   /react@18.3.1:
@@ -3164,6 +3169,10 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
     dev: true
+
+  /set-cookie-parser@2.7.1:
+    resolution: {integrity: sha512-IOc8uWeOZgnb3ptbCURJWNjWUPcO3ZnTTdzsurqERrP6nPyv+paC55vJM0LpOlT2ne+Ix+9+CRG1MNLlyZ4GjQ==}
+    dev: false
 
   /slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}

@@ -15,8 +15,8 @@ dependencies:
     specifier: ^7.0.0
     version: 7.9.3(react-dom@18.3.1)(react@18.3.1)
   twinc-core-ics-creator:
-    specifier: ^0.1.7
-    version: 0.1.7
+    specifier: ^0.2.0
+    version: 0.2.2
 
 devDependencies:
   '@biomejs/biome':
@@ -3257,8 +3257,8 @@ packages:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
     dev: true
 
-  /twinc-core-ics-creator@0.1.7:
-    resolution: {integrity: sha512-O0pgzeCNQPzi3cWg8n9NBZ5ojsHtJnq+dmlWLcaojlRK+ui5hb0+o7yTmhtXCFfF6MFo93BHRTjvMISbK7NN3A==}
+  /twinc-core-ics-creator@0.2.2:
+    resolution: {integrity: sha512-Q8SUEp3RvXB0RJNsJAOzs2GIet95QaTma55t61TTdVNo9O+W73xEHfYKvdE7KxqGA7e9CgTQAT/EJYbnyLkKfw==}
     dev: false
 
   /typescript@5.9.2:

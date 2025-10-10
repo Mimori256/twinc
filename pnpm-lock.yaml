@@ -18,8 +18,8 @@ importers:
         specifier: ^7.0.0
         version: 7.9.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       twinc-core-ics-creator:
-        specifier: ^0.2.2
-        version: 0.2.2
+        specifier: ^0.2.3
+        version: 0.2.3
     devDependencies:
       '@biomejs/biome':
         specifier: ^1.5.3
@@ -1644,8 +1644,8 @@ packages:
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
 
-  twinc-core-ics-creator@0.2.2:
-    resolution: {integrity: sha512-Q8SUEp3RvXB0RJNsJAOzs2GIet95QaTma55t61TTdVNo9O+W73xEHfYKvdE7KxqGA7e9CgTQAT/EJYbnyLkKfw==}
+  twinc-core-ics-creator@0.2.3:
+    resolution: {integrity: sha512-rpOBXEZBBGEoFHTvspDmWXZKcI1muek4wpT5m5qH5zGd+Lv2gAL58RLNR5Ha+2HZKF/Mb+rsFYDev5qgA7eeGw==}
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
@@ -3448,7 +3448,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  twinc-core-ics-creator@0.2.2: {}
+  twinc-core-ics-creator@0.2.3: {}
 
   typescript@5.9.3: {}
 

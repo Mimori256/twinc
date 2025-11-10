@@ -17,7 +17,7 @@ const Help = () => {
         <p>TWINSからカレンダーを作る場合</p>
         <p>
           <a
-            href="https://twins.tsukuba.ac.jp/campusweb/campussmart.do"
+            href="https://twins.tsukuba.ac.jp/campusweb/"
             target="_blank"
             rel="nooperner noreferrer"
           >

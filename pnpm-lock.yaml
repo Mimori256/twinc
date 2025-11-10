@@ -31,8 +31,8 @@ importers:
         specifier: ^5.0.2
         version: 5.0.2
       '@linaria/react':
-        specifier: ^5.0.3
-        version: 5.0.3(react@18.3.1)
+        specifier: ^6.0.0
+        version: 6.3.0(react@18.3.1)
       '@linaria/vite':
         specifier: ^5.0.4
         version: 5.0.4(rollup@4.52.4)(typescript@5.9.3)(vite@5.4.20(@types/node@22.18.11))
@@ -811,12 +811,16 @@ packages:
     resolution: {integrity: sha512-l5jQq7w9kDvonfr/0MBF47Dagx9Y9f/o5Q8j3zv7GepwG/yHQdbjKr0tq07rx2fSDDX7Nbqlxk6k9Ymir/NGpg==}
     engines: {node: '>=16.0.0'}
 
+  '@linaria/core@6.3.0':
+    resolution: {integrity: sha512-fs1aQyX4DmJpeGMyobuSznAo/Y02+Q8vhm+c/jr2WHDmqKHEJpCqH2Mhu1End+SdiUvZIUgb4MNiZryWtZLD5g==}
+    engines: {node: '>=16.0.0'}
+
   '@linaria/logger@5.0.0':
     resolution: {integrity: sha512-PZd5H0I4F84U0kXSE+vD75ltIGDxEA6gMDNWS2aDZFitmdlQM5rIXqvKFrp5NsHa7a3AH+I2Hxm0dg60WZF7vg==}
     engines: {node: '>=16.0.0'}
 
-  '@linaria/react@5.0.3':
-    resolution: {integrity: sha512-faTQHnUlrAz0Lodu+rr6Yx59rX0nqFOrZ5/IdlfQcTRz9VebyVL4vtA3AOecmn1YFZjMpqjopT0OzNz6GknQSg==}
+  '@linaria/react@6.3.0':
+    resolution: {integrity: sha512-CjdEPwQCIRB3BRecnwK0g9mEWow3M1zAJTKI7h/B6j3yRLQRelitcoLd19MxZNz89pc0NNPALqy2I+eBGH0lJA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       react: '>=16'
@@ -1028,6 +1032,14 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
+
+  '@wyw-in-js/processor-utils@0.6.0':
+    resolution: {integrity: sha512-5YAZMUmF+S2HaqheKfew6ybbYBMnF10PjIgI7ieyuFxCohyqJNF4xdo6oHftv2z5Z4vCQ0OZHtDOQyDImBYwmg==}
+    engines: {node: '>=16.0.0'}
+
+  '@wyw-in-js/shared@0.6.0':
+    resolution: {integrity: sha512-BozBos29AuMWOvjjKf+bYYN+Vku0Nar6+y5oxrJXIZzUEKiWTVnIxO256vi8cUBGfo/DH44o+qZTkkdSN2pPXw==}
+    engines: {node: '>=16.0.0'}
 
   ansi-styles@4.3.0:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
@@ -2594,6 +2606,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@linaria/core@6.3.0':
+    dependencies:
+      '@wyw-in-js/processor-utils': 0.6.0
+    transitivePeerDependencies:
+      - supports-color
+
   '@linaria/logger@5.0.0':
     dependencies:
       debug: 4.4.3
@@ -2601,15 +2619,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@linaria/react@5.0.3(react@18.3.1)':
+  '@linaria/react@6.3.0(react@18.3.1)':
     dependencies:
       '@emotion/is-prop-valid': 1.4.0
-      '@linaria/core': 5.0.2
-      '@linaria/tags': 5.0.2
-      '@linaria/utils': 5.0.2
+      '@linaria/core': 6.3.0
+      '@wyw-in-js/processor-utils': 0.6.0
+      '@wyw-in-js/shared': 0.6.0
       minimatch: 9.0.5
       react: 18.3.1
       react-html-attributes: 1.4.6
+      resolve: 1.22.10
       ts-invariant: 0.10.3
     transitivePeerDependencies:
       - supports-color
@@ -2825,6 +2844,21 @@ snapshots:
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
       vite: 5.4.20(@types/node@22.18.11)
+    transitivePeerDependencies:
+      - supports-color
+
+  '@wyw-in-js/processor-utils@0.6.0':
+    dependencies:
+      '@babel/generator': 7.28.3
+      '@wyw-in-js/shared': 0.6.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@wyw-in-js/shared@0.6.0':
+    dependencies:
+      debug: 4.4.3
+      find-up: 5.0.0
+      minimatch: 9.0.5
     transitivePeerDependencies:
       - supports-color
 

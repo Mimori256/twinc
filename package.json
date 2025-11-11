@@ -22,7 +22,7 @@
     "twinc-core-ics-creator": "^0.2.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.5.3",
+    "@biomejs/biome": "^2.0.0",
     "@types/react-router-dom": "^5.3.3",
     "gh-pages": "^3.2.3",
     "@linaria/babel-preset": "^5.0.4",
